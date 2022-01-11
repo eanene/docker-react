@@ -1,0 +1,20 @@
+version: '3'
+services:
+  react-app:
+    image: eanene/react-app:volumeversion
+    #build: 
+      #context: .
+      #dockerfile: Dockerfile.dev   #I commented this 2 out, cuz i did not want to be renuilding the image
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/node_modules
+      - .:/app 
+  tests:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["npm", "run", "test"]

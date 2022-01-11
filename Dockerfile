@@ -6,6 +6,7 @@ COPY . .
 RUN npm run build 
 
 FROM nginx 
+EXPOSE 80 
 COPY --from=builder /app/build /usr/share/nginx/html  
 #checkout the nginx documenttation. anything you put int ehabove html path will be served when nginx starts up
 
